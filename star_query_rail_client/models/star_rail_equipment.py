@@ -56,7 +56,9 @@ class StarRailEquipment:
         return field_dict
 
     @classmethod
-    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+    def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T | None:
+        if src_dict is None:
+            return None
         d = src_dict.copy()
         id = d.pop("id")
 
