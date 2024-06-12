@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "star-query-rail-client"
-version = "0.1.1"
+version = "0.1.2"
 description = "A client library for accessing star_query_rail"
 authors = []
 readme = "README.md"

@@ -2,13 +2,16 @@
 
 from .body_login_access_token_login_access_token_post import BodyLoginAccessTokenLoginAccessTokenPost
 from .character_prop import CharacterProp
+from .character_register import CharacterRegister
 from .connect_uc_register import ConnectUCRegister
 from .email import Email
 from .email_base import EmailBase
 from .email_register import EmailRegister
+from .email_update import EmailUpdate
 from .equip_wiki import EquipWiki
 from .euc_public import EUCPublic
 from .http_validation_error import HTTPValidationError
+from .message import Message
 from .property_info import PropertyInfo
 from .rank import Rank
 from .recommend_property import RecommendProperty
@@ -28,13 +31,16 @@ from .validation_error import ValidationError
 __all__ = (
     "BodyLoginAccessTokenLoginAccessTokenPost",
     "CharacterProp",
+    "CharacterRegister",
     "ConnectUCRegister",
     "Email",
     "EmailBase",
     "EmailRegister",
+    "EmailUpdate",
     "EquipWiki",
     "EUCPublic",
     "HTTPValidationError",
+    "Message",
     "PropertyInfo",
     "Rank",
     "RecommendProperty",

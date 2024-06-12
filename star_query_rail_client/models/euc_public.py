@@ -1,7 +1,13 @@
-from typing import Any, Dict, List, Type, TypeVar, cast
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.character_register import CharacterRegister
+
 
 T = TypeVar("T", bound="EUCPublic")
 
@@ -11,15 +17,15 @@ class EUCPublic:
     """
     Attributes:
         email (str):
-        userid (int):
-        nickname (str):
-        characters (List[int]):
+        userid (Union[Unset, int]):
+        nickname (Union[Unset, str]):
+        characters (Union[Unset, List['CharacterRegister']]):
     """
 
     email: str
-    userid: int
-    nickname: str
-    characters: List[int]
+    userid: Union[Unset, int] = UNSET
+    nickname: Union[Unset, str] = UNSET
+    characters: Union[Unset, List["CharacterRegister"]] = UNSET
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -29,31 +35,46 @@ class EUCPublic:
 
         nickname = self.nickname
 
-        characters = self.characters
+        characters: Union[Unset, List[Dict[str, Any]]] = UNSET
+        if not isinstance(self.characters, Unset):
+            characters = []
+            for characters_item_data in self.characters:
+                characters_item = characters_item_data.to_dict()
+                characters.append(characters_item)
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "email": email,
-                "userid": userid,
-                "nickname": nickname,
-                "characters": characters,
             }
         )
+        if userid is not UNSET:
+            field_dict["userid"] = userid
+        if nickname is not UNSET:
+            field_dict["nickname"] = nickname
+        if characters is not UNSET:
+            field_dict["characters"] = characters
 
         return field_dict
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
+        from ..models.character_register import CharacterRegister
+
         d = src_dict.copy()
         email = d.pop("email")
 
-        userid = d.pop("userid")
+        userid = d.pop("userid", UNSET)
 
-        nickname = d.pop("nickname")
+        nickname = d.pop("nickname", UNSET)
 
-        characters = cast(List[int], d.pop("characters"))
+        characters = []
+        _characters = d.pop("characters", UNSET)
+        for characters_item_data in _characters or []:
+            characters_item = CharacterRegister.from_dict(characters_item_data)
+
+            characters.append(characters_item)
 
         euc_public = cls(
             email=email,
